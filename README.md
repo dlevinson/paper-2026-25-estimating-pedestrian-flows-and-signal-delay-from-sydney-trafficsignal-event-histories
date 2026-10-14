@@ -49,7 +49,7 @@ The snapshots here allow independent reproduction without downloading that large
 
 Authored code is MIT licensed; authored documentation and releasable derived outputs are CC BY 4.0, following the companion archive. These licenses do not grant access to restricted inputs or relicense third-party software or sources. See `LICENSE.md`.
 
-Raw SCATS controller histories cannot be redistributed under the archive terms. Reproducible scripts and derived, nonidentifying movement-hour, site, calibration-factor, and figure-source outputs are available at https://github.com/dlevinson/paper-2026-25-estimating-pedestrian-flows-and-signal-delay-from-sydney-traffic-signal-event-histories.
+Raw SCATS controller histories cannot be redistributed under the archive terms. Reproducible scripts and derived, nonidentifying movement-hour, site, calibration-factor, and figure-source outputs are available at https://github.com/dlevinson/paper-2026-25-estimating-pedestrian-flows-and-signal-delay-from-sydney-trafficsignal-event-histories.
 
 
 The accepted manuscript in `paper/` preserves the submission-era future-tense availability wording; `documentation/AVAILABILITY_STATEMENT.txt` supplies the corrected present-tense statement for the final article.

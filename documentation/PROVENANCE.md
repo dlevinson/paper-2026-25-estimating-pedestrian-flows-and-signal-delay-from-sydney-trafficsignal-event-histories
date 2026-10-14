@@ -9,3 +9,7 @@ The 29 September accepted correction counts a site-hour only when `included_move
 The public reproduction entrypoint adds monthly pooling from the released per-day movement-hour sufficient statistics (`n`, censor count, zero count, exposure), using the original automatic-service and complete-core-date masks. This produces the same monthly rates and common support as pooling the restricted event observations, without redistributing those observations. Minor numeric differences from six-decimal CSV serialization are checked with absolute tolerances of 1e-5 for network tables and 1e-4 for temporal tables. Figure files may differ in metadata, font handling, or rasterization between software versions.
 
 The other extraction and analysis scripts are byte-identical copies of authored source. They are provided for inspection and for researchers with authorized external inputs. The public reproduction entrypoint is the tested route to the accepted results; it does not run proprietary decoding or require raw data.
+
+## Repository naming
+
+The standard full-title basename is 101 characters, exceeding GitHub's 100-character repository-name limit. The compound `traffic-signal` is joined as `trafficsignal` in the folder and remote basename; all title words and the full `paper-2026-25` identifier are retained. The paper citation retains its original spelling.
