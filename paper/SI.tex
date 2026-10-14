@@ -1,0 +1,343 @@
+% REVIEW CHANGE 2026-09-30: Applied 29 September revision recommendations.
+% Search for REVIEW CHANGE to review edits in place. R1--R6 refer to reviewer questions.
+% AUDIT marks the usable-site-hour correction; FORMAT marks shortening and table relocation.
+% Revised 2026-08-12: calibration provenance, exposure definitions, numerical descriptions, and availability statement.
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{setspace}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=blue
+}
+
+\setstretch{1.05}
+\setlength{\emergencystretch}{2em}
+\widowpenalty=10000
+\clubpenalty=10000
+\setlist[itemize]{leftmargin=*, itemsep=0.2em}
+
+\title{\textbf{Supplemental Information: Estimating Pedestrian Flows and Signal Delay from Sydney Traffic-Signal Event Histories}}
+\author{David M. Levinson\\
+\small School of Civil Engineering, The University of Sydney\\
+\small \texttt{david.levinson@sydney.edu.au}}
+\date{}
+
+\begin{document}
+\maketitle
+
+% REVIEW CHANGE: FORMAT: Move nomenclature from main text to SI; unexpanded delay uses event-seconds.
+\section*{SI-0. Nomenclature}
+\begin{table}[htbp]
+\centering
+\caption{Nomenclature used in this article}
+\label{tab:nomenclature}
+\footnotesize
+\begin{tabular}{@{}p{0.18\textwidth}p{0.61\textwidth}p{0.14\textwidth}@{}}
+\toprule
+Symbol & Definition & Unit \\
+\midrule
+$i,h$ & Restrictive-cycle and pedestrian movement-hour indices & -- \\
+$Y_i,C_i,R_i$ & First-actuation latency, censored exposure, and actuation-to-Walk wait & s \\
+$\mathcal A_h,\mathcal C_h$ & Actuated and right-censored cycles in hour $h$ & sets \\
+$K_h,L_h,T_h$ & Actuated cycles, first-event likelihood exposure, and count-period exposure in hour $h$ & cycles; s; s \\
+$\widehat\lambda_h$ & Estimated pedestrian arrival-event rate & events/s \\
+$\widehat N_h^{\,e},\widehat N_h$ & Estimated arrival-event count and estimated pedestrian crossings & events; crossings \\
+$\widehat\alpha_N$ & Estimated pedestrian-crossing adjustment factor & -- \\
+$\widehat D_h$ & Unexpanded first-actuation delay estimate & event-s \\
+$\widehat D_{h,100},\widehat D_{h,b}$ & Estimated delay assuming 100\% compliance and under the behaviour-adjusted scenario & pedestrian-s \\
+$\widehat\alpha_{D,100},\widehat\alpha_{D,b}$ & Estimated delay adjustment factors for the two targets & -- \\
+$\widehat\kappa$ & Estimated behaviour-adjusted delay fraction relative to $\widehat D_{h,100}$ & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+\section*{SI-1. SCATS Event Construction}
+
+Sydney Coordinated Adaptive Traffic System history (HST) files record timestamped controller events, including pedestrian calls and Walk-service state changes. The delivered source contains 12,000 regional HST files: 16 control-region files for each of 750 dates from 1 September 2016 through 20 September 2018. Its site inventory contains 229 signalised intersections across metropolitan Sydney. The application date is 18 September 2018. Converted HST histories provide timestamped pedestrian demand and service changes. For each site and pedestrian movement:
+\begin{itemize}
+  \item \texttt{Active=Off} begins flashing-don't-walk and a restrictive opportunity;
+  \item the first subsequent \texttt{Demand=On} is the first actuation;
+  \item the next \texttt{Active=On} begins Walk and closes the waiting interval; and
+  \item a restrictive opportunity with no demand contributes its full duration as right-censored exposure.
+\end{itemize}
+
+Here, a pedestrian movement is a controller identifier for a crossing movement. Where it has a unique spatial match, it identifies a crosswalk and its axis. Counts combine both travel directions within that crosswalk; the histories do not identify an individual pedestrian's direction of travel. We therefore use ``crosswalk orientation'' for the inferred spatial information.
+
+Later demands in the same opportunity are not count events. They may be repeated calls, additional button users after demand is registered, or controller logging effects. The first-event likelihood only requires the first qualifying actuation and complete censored exposure.
+
+Let $L_h$ be first-event likelihood exposure: an actuated cycle contributes time only to its first actuation, while a no-actuation cycle contributes its full restrictive duration. Let $T_h$ be the distinct total clock-time exposure in movement-hour $h$ over which arrival events are counted. Treating first-actuation latency as a censored exponential waiting time from a locally Poisson process gives
+\begin{equation}
+L_h=\sum_{i\in\mathcal A_h}Y_i+\sum_{i\in\mathcal C_h}C_i,
+\qquad
+\hat\lambda_h=\frac{K_h}{L_h},
+\qquad
+\widehat N_h^{\,e}=T_h\widehat\lambda_h,
+\qquad
+\widehat N_h=\widehat\alpha_N\widehat N_h^{\,e}.
+\end{equation}
+Thus $L_h$ estimates the first-event rate and $T_h$ expands that rate over the count period; they are not the same exposure. The event-equivalent count is converted to estimated pedestrian crossings by accounting for missing actuation, group arrivals, and remaining timing differences.
+
+\section*{SI-2. Count and Delay Transfer}
+
+The adjustment coefficients are established in \citet{levinson2026firstActuationCalibration}. That study reports 14 manual-observation cases from 11 intersections and 24 video-observation cases from three intersections. The two sources produced essentially identical mean count factors (2.202 and 2.203) and similar mean factors for delay assuming 100\% compliance (2.176 and 2.233). This application uses the study's reported overall coefficients and empirical factor ranges; it does not re-estimate the calibration. The reported values are:
+\begin{itemize}
+  \item mean count factor $\widehat\alpha_N=2.203$, empirical 2.5th--97.5th percentile range 1.417--3.138, and full range 1.351--3.213;
+  \item mean delay factor assuming 100\% compliance, $\widehat\alpha_{D,100}=2.212$, empirical 2.5th--97.5th percentile range 1.217--3.671, and full range 1.156--3.751; and
+  \item mean behaviour-adjusted delay factor $\widehat\alpha_{D,b}=1.655$, empirical 2.5th--97.5th percentile range 0.886--2.738, and full range 0.870--2.853.
+\end{itemize}
+The previous paper defines the behaviour-adjusted factor using a rate-based compliance scenario for manual observations and recorded crossing-start delay for video observations. This application uses the reported coefficient as an alternative practical delay scenario.
+
+For an observed first-actuation-to-Walk wait $R_i$, estimated unexpanded delay is
+\begin{equation}
+\hat D_i=R_i+\frac{\hat\lambda_hR_i^2}{2}.
+\end{equation}
+The first term is the observed wait from first actuation to Walk; the second estimates event-equivalent delay to later arrivals. Estimated pedestrian crossings use the reported mean count adjustment. Estimated pedestrian delay uses $\widehat\alpha_{D,100}$ when every restrictive arrival waits for Walk and $\widehat\alpha_{D,b}$ under the behaviour-adjusted scenario.
+
+The compliance comparison retains estimated pedestrian crossings as an analytical control. This isolates the effect of the delay target; it does not assert that pedestrian demand would remain fixed if signal timing or long-run delay changed.
+
+% REVIEW CHANGE: R2: Add full Poisson integral derivation and separate count/delay calibration scales.
+\subsection*{Later arrivals and the calibration scale}
+
+The delay expression is conditional on an observed first-actuation-to-Walk interval $R_i$. Under the homogeneous Poisson arrival-event approximation, the expected number of subsequent events in that interval is $\widehat\lambda_h R_i$. Conditional on their number, event times are uniformly distributed over the interval. Thus a later event has mean remaining wait $R_i/2$. Equivalently, writing $u$ for elapsed seconds since the first actuation,
+\begin{equation}
+\widehat D_i
+=R_i+\int_0^{R_i}(R_i-u)\widehat\lambda_h\,du
+=R_i+\frac{\widehat\lambda_hR_i^2}{2}.
+\label{eq:si-delay-derivation}
+\end{equation}
+The first term represents one initiating arrival event; the integral represents all expected later events. The expression estimates event-equivalent seconds of delay. It uses the fitted arrival-event rate even though later events are not separately observed after the first call. Its interpretation assumes that this rate also describes arrivals during the remaining interval.
+
+The inferred count $\widehat N_h^{\,e}=T_h\widehat\lambda_h$ is an event total over a count period, so it cannot replace a rate in the integral. The corresponding calibrated pedestrian rate would be $\widehat N_h/T_h=\widehat\alpha_N\widehat\lambda_h$. If a constant factor converted every event into the same expected number of pedestrians, with identical waiting behaviour, it would multiply both terms:
+\begin{equation}
+\widehat\alpha_N\left(R_i+\frac{\widehat\lambda_hR_i^2}{2}\right).
+\end{equation}
+Scaling only the later-arrival term would leave the initiating event unexpanded. The reported estimator instead calibrates the entire delay expression to each observed delay target, using $\widehat\alpha_{D,100}$ or $\widehat\alpha_{D,b}$. These empirical adjustments allow count and delay discrepancies to differ; they do not establish a common, locally validated pedestrian-arrival model. Inserting $\widehat\alpha_N$ inside the existing expression while retaining the reported delay factor would change the calibration denominator and would require recalibration.
+
+For calibration case $j$, the adjustment factors are:
+\begin{equation}
+\widehat\alpha_{N,j}=\frac{N_j}{\widehat N_j^{\,e}},\qquad
+\widehat\alpha_{D,100,j}=\frac{D_{j,100}}{\widehat D_j},\qquad
+\widehat\alpha_{D,b,j}=\frac{D_{j,b}}{\widehat D_j}.
+\end{equation}
+Here $N_j$ is the observed pedestrian count and $\widehat N_j^{\,e}=T_j\widehat\lambda_j$. The delay denominator sums the event-equivalent cycle delays. The target $D_{j,100}$ replays every observed restrictive-phase arrival as waiting until Walk; $D_{j,b}$ uses rate-adjusted compliance for manual cases and recorded crossing-start delay for video cases \citep{levinson2026firstActuationCalibration}. For either target $s\in\{100,b\}$, the implied average delay is
+\begin{equation}
+\frac{\widehat D_{h,s}}{\widehat N_h}
+=\frac{\widehat\alpha_{D,s}}{\widehat\alpha_N}
+\frac{\widehat D_h}{T_h\widehat\lambda_h}.
+\end{equation}
+The count and delay factors may differ because they calibrate different targets.
+
+\section*{SI-3. Movement-Hour Screens}
+
+Recommended totals require:
+\begin{itemize}
+  \item at least five recorded demands in the movement-hour;
+  \item a zero-latency demand share below 0.50;
+  \item a no-actuation opportunity share below 0.75; and
+  \item no movement-hour or site-hour flag for automatic service, demand suppression, scheduled calls, or forced calls.
+\end{itemize}
+
+A no-demand auto-service candidate has zero calls, at least eight \texttt{Active=On} intervals, and active service through at least 80\% of the hour. The site-hour rule excludes a row when at least half of active pedestrian movements exhibit the candidate pattern.
+
+A scheduled-call movement-day candidate has at least 100 calls, at least 95\% followed by Walk, calls in at least six hours, and a 75th-percentile call-to-Walk time no greater than 10 seconds. This flags 10 movement-days and 215 movement-hours, including movements 1 and 2 at site 247. The rules are intentionally fixed and conservative.
+
+At the end of the 24-hour observation period, 10 first actuations have no subsequent Walk in the available event window. They remain valid information for count estimation but are omitted from delay aggregation because their waiting intervals are not closed.
+
+\begin{table}[htbp]
+\centering
+\caption{SCATS screening cascade and output summary using the reported calibration coefficients}
+\begin{tabular}{@{}p{0.68\textwidth}r@{}}
+\toprule
+Quantity & Value \\
+\midrule
+Candidate movement-hours & 9{,}626 \\
+Pass statistical quality screens & 5{,}336 \\
+Statistical quality-screen exclusions & 4{,}290 \\
+Pass statistical and controller-pattern screens & 5{,}114 \\
+Additional controller-pattern exclusions after quality screens & 222 \\
+Sites with positive retained estimates & 174 \\
+First actuations without following Walk & 10 \\
+Rows with a movement-rule flag before combined screening & 1{,}074 \\
+Scheduled/forced-call flags (subset) & 215 \\
+Rows with a movement- or site-hour flag before combined screening & 1{,}192 \\
+Movement-day rows & 537 \\
+HST movements with mapped crosswalk orientation & 113 \\
+Sites with mapped crosswalk orientation & 61 \\
+Estimated pedestrian crossings & 331{,}729 \\
+Reported count-factor transfer range & 213{,}384--472{,}525 \\
+Delay assuming 100\% compliance & 3{,}671.5 pedestrian-hours \\
+100\%-compliance transfer range & 2{,}020.3--6{,}092.2 hours \\
+Behaviour-adjusted delay & 2{,}746.3 pedestrian-hours \\
+Behaviour-adjusted transfer range & 1{,}470.9--4{,}544.9 hours \\
+Average delay: 100\% / behaviour-adjusted & 39.8 / 29.8 seconds/crossing \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% REVIEW CHANGE: R5: Add zero-actuation boundary case, missing-exposure distinction, and possible pooling assumptions.
+\subsection*{Sparse hours and possible pooling}
+
+The fixed screens assess the available actuation and censoring information and controller patterns. They do not exclude an hour because the calibration study lacks observations at that clock time. At site 516 on 18 September 2018, the extracted movement-hour estimates at 01:00, 05:00, and 23:00 contain only one or two recorded actuations per represented movement and fail the five-actuation minimum. No movement-hour estimation rows are present at 00:00 or 02:00--04:00. The resulting missing estimates do not establish zero pedestrian flow or explain why qualifying records are absent.
+
+Mathematically, if $K_h=0$ but $L_h>0$, the censored Poisson likelihood has its maximum at $\widehat\lambda_h=0$. This is a boundary estimate from zero observed actuations, not proof that no pedestrians arrived. If $L_h=0$, the rate is undefined. Missing exposure must therefore be distinguished from observed no-actuation exposure. A no-actuation cycle can inform the rate likelihood when its exposure is known, but it provides no observed first-actuation-to-Walk waiting interval for the delay calculation.
+
+Consecutive hours could be combined for the same movement if a common arrival-event rate and compatible controller operation were defensible. For a proposed block of hours $\mathcal B$, pooling the likelihood contributions would give
+\begin{equation}
+\widehat\lambda_{\mathcal B}
+=\frac{\sum_{h\in\mathcal B}K_h}{\sum_{h\in\mathcal B}L_h},\qquad
+\widehat N_{\mathcal B}
+=\widehat\alpha_N\widehat\lambda_{\mathcal B}
+\sum_{h\in\mathcal B}T_h.
+\end{equation}
+Such pooling could increase the number of actuations supporting an estimate at the cost of temporal resolution. It cannot recover missing exposure, establish demand from a block with no actuations, or automatically remove a high censoring share or controller-pattern flag. Block definitions, screening and the common-rate assumption would need evaluation. We retain the prespecified hourly analysis for the main-day profile. The existing seasonal analysis pools corresponding movement and clock-hour observations across dates within each month; it does not combine adjacent clock hours.
+
+\section*{SI-4. Site Aggregation and Density Bands}
+
+% REVIEW CHANGE: AUDIT: Explain denominator correction; counts and total delay are unchanged.
+A usable site-hour contains at least one movement-hour that passes both the statistical and controller-pattern screens. The exported site-hour file also includes rows with no retained movement; those rows contribute neither crossings nor delay and are excluded from the flow denominator. Across the 174 retained sites there are 2,307 usable site-hours, with 1--22 per site (median 15). Site flow divides estimated crossings by this count of usable site-hours. At site 516, 17 hours contain at least one retained movement; its 20 exported rows include three hours with none. The site flow is 358.6 crossings per usable hour, with its total of 6,095.4 crossings and 39.7 pedestrian-hours of delay unchanged.
+
+The displayed distributions are Gaussian kernel densities of $\ln(x)$, where $x$ is estimated crossing flow, estimated crossing count, average delay, or total delay. The reported case-level coefficient sets are applied in turn to the unexpanded site estimates, and each density is recomputed. Pointwise 2.5th and 97.5th percentiles across the transferred estimates form the descriptive transfer envelope. The displayed curve uses the reported mean factor estimates.
+
+This procedure visualises factor transfer rather than resampling sites or calibration cases. The envelope is not a confidence band and does not represent sampling uncertainty. Site totals remain coverage-dependent. %The density script is \path{paper/scripts/build_paper2_distribution_data.py}; its generated CSVs are retained with the figure source.
+
+% REVIEW CHANGE: R4 + AUDIT: Disclose rounded coordinates, display offsets, and corrected usable-hour denominator.
+The network map aggregates the same estimator-matched site-hour file. Inventory coordinates are rounded to $0.01^{\circ}$: the 174 retained sites occupy 87 distinct coordinate pairs. Small display offsets separate sites sharing a coordinate, with lines linking them to the recorded position. The offsets do not recover exact site locations. It shows the 229-site inventory, with the 174 retained sites coloured by estimated crossing flow and the remaining sites in grey. The site 516 panel joins movement-hour totals to the four crossing paths with unique controller-to-geometry matches. Under the reported mean coefficients, site 516 contributes an estimated 6,095.4 pedestrian crossings and 39.7 pedestrian-hours of delay assuming 100\% compliance over 17 usable site-hours. The four displayed movement totals round to 643, 1,696, 1,180, and 2,577 crossings and therefore sum to 6,096 after component-wise rounding. %The map is reproduced by \path{paper/scripts/build_paper2_gis_figure.R}.
+
+
+% SUPPLEMENTAL-INFORMATION INSERT
+% Insert in SI-4 after the paragraph ending:
+% "The map is reproduced by \path{paper/scripts/build_paper2_gis_figure.R}."
+
+\subsection*{Site 516 temporal profiles}
+
+The temporal extension uses site 516, Willoughby Road at Albany Street in Crows Nest. The raw extraction covers 372 site-days: the seven-day period from 14 through 20 September 2018 and the 365-day seasonal period from 1 September 2017 through 31 August 2018. All 372 files decode successfully. Two seasonal dates contain gaps in the core daytime record: 25 October 2017 lacks pedestrian records from 14:00 through 18:59, and 26 April 2018 lacks records from 12:00 through 18:59. These dates are excluded from their monthly pools rather than treated as zero-flow periods.
+
+For 18 September 2018, 16 clock hours have usable estimates for all four pedestrian movements. The hour beginning at 22:00 has three usable movements. Hours 00:00--05:59 and 23:00--23:59 have no movement passing the fixed screens and are reported as not estimable. Summing the usable movement-specific hourly estimates gives 6,095.4 estimated pedestrian crossings. It is not interpreted as an observed 24-hour census.
+
+For the day-of-week comparison, the primary series retains only pedestrian-movement and clock-hour combinations that pass the fixed screens on all seven days. The common set contains all four movements during the hours beginning 09:00--18:00 and 20:00, and movements 2--4 during 07:00, 08:00, 19:00, and 21:00. Movement 1 is omitted from those four hours because it falls below the minimum of five recorded actuations on at least one day. On Sunday, movement 1 records 4, 3, 2, and 2 actuations in those hours, respectively; at 21:00 it is also sparse on Saturday (4 actuations) and Monday (2 actuations). Movement 1 remains usable during the other included Sunday hours, the daily extraction is complete, and none of these observations triggers the automatic-service exclusion. The asymmetric support therefore results from sparse recorded calls under the prespecified screen, not evidence of a changed phase or a missing data period. The histories cannot rule out intermittent push-button faults or pedestrians not actuating the signal. Holding this screened set constant ensures that differences in the primary daily estimates are not caused by differences in included clock hours or movements. Table~\ref{tab:site516-week} also reports the coverage-dependent total over every usable movement and hour on each day as a diagnostic; that secondary quantity is not plotted in the article figure.
+
+\begin{table}[htbp]
+\centering
+\caption{Site 516 estimated pedestrian crossings, 14--20 September 2018. The comparable estimate uses the same pedestrian crossing movements during the same clock hours on every day. The all-usable estimate varies with daily coverage and is retained only as a diagnostic.}
+\label{tab:site516-week}
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Date & Day & Comparable estimate & All-usable estimate & Usable combinations \\
+\midrule
+14 September & Friday    & 6{,}694 & 7{,}236 & 70 \\
+15 September & Saturday  & 5{,}225 & 5{,}379 & 63 \\
+16 September & Sunday    & 4{,}162 & 4{,}162 & 56 \\
+17 September & Monday    & 5{,}442 & 5{,}685 & 64 \\
+18 September & Tuesday   & 5{,}724 & 6{,}095 & 67 \\
+19 September & Wednesday & 5{,}589 & 5{,}931 & 66 \\
+20 September & Thursday  & 5{,}618 & 5{,}891 & 67 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For the seasonal comparison, first-actuation and right-censored exposures are pooled within each month by pedestrian movement and clock hour after automatic-service exclusions. Each movement-specific hourly estimate must then pass the minimum-call, zero-latency, and censor-share screens. The reported series uses the same set of movements and clock hours in every month, making coverage constant across the 12 estimates. Table~\ref{tab:site516-month} reports typical-day estimates on this common coverage.%; it does not multiply the daily rate by the number of days in the month.
+
+\begin{table}[htbp]
+\centering
+\caption{Site 516 seasonal typical-day estimates using the same pedestrian crossing movements and clock hours in every month}
+\label{tab:site516-month}
+\footnotesize
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Month & Complete dates used & Estimated crossings per typical day \\
+\midrule
+September 2017 & 30/30 & 6{,}102 \\
+October 2017   & 30/31 & 5{,}605 \\
+November 2017  & 30/30 & 5{,}957 \\
+December 2017  & 31/31 & 5{,}280 \\
+January 2018   & 31/31 & 5{,}268 \\
+February 2018  & 28/28 & 6{,}021 \\
+March 2018     & 31/31 & 5{,}682 \\
+April 2018     & 29/30 & 5{,}607 \\
+May 2018       & 31/31 & 5{,}617 \\
+June 2018      & 30/30 & 5{,}132 \\
+July 2018      & 31/31 & 5{,}446 \\
+August 2018    & 31/31 & 5{,}532 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% OPTIONAL SI-7 OUTPUT-LIST ADDITIONS
+% Add these items to the existing generated-output list.
+
+%\begin{itemize}
+%  \item \path{site516_diurnal_20180918.csv};
+%  \item \path{site516_week_20180914_20180920.csv};
+%  \item \path{site516_monthly_201709_201808.csv};
+%  \item \path{site516_processing_status.csv}; and
+%  \item \path{site516_pedestrian_temporal_profiles.pdf}.
+%\end{itemize}
+
+
+\section*{SI-5. Movement Geometry}
+
+HST pedestrian movement numbers do not directly identify physical direction. The conservative mapping is
+\begin{equation}
+\text{HST pedestrian movement}
+\rightarrow
+\text{pedestrian signal group}
+\rightarrow
+\text{spatial pedestrian path}.
+\end{equation}
+Service-duration signatures match HST movements to spatial signal groups only where a unique association exists. The 18 September spatial extract contains 597 pedestrian paths at 207 sites; 113 HST pedestrian movements at 61 sites have a known crossing orientation. A direct controller-configuration lookup would improve coverage.
+
+Orientation is bidirectional. A path labeled north--south indicates the crossing axis and includes pedestrians walking in both directions. Geometry is not required for the all-movement totals but is required for mapping crosswalk orientation and later approach-level comparison.
+
+\section*{SI-6. Why City Counts Are Not Used}
+
+The City of Sydney counts are unusable for this validation: manual samples do not match individual SCATS crossing movements, and automatic counts begin after the 2016--2018 signal histories \citep{cityofsydney2026manualcounts,cityofsydneyAutomaticHourlyPedestrianCount}.
+
+%\section*{SI-7. Generated Outputs}
+%
+%The primary generated files are:
+%\begin{itemize}
+%  \item \path{movement_hour_estimates_calibrated_mcav_20180918.csv};
+%  \item \path{movement_day_estimates_calibrated_mcav_20180918.csv};
+%  \item \path{pedestrian_movement_hour_delay_20180918.csv};
+%  \item \path{pedestrian_site_hour_delay_20180918.csv};
+%  \item \path{site_summary_calibrated_mcav_20180918.csv};
+%  \item \path{movement_day_estimates_calibrated_mcav_mapped_unique_20180918.csv};
+%  \item \path{movement_day_estimates_calibrated_mcav_mapped_unique_20180918.geojson};
+%  \item \path{paper2_scats_flow_map_sites.csv};
+%  \item \path{paper2_scats_flow_map_site516.csv};
+%  \item \path{paper2_peer_calibration_summary.csv};
+%  \item \path{paper2_peer_site_summary.csv};
+%  \item \path{mcav_calibrated_summary_20180918.md}; and
+%  \item \path{pedestrian_hour_delay_summary_20180918.md}.
+%\end{itemize}
+
+%The calibration application is reproduced by \path{broad_results/network_20180918/scripts/apply_mcav_calibration.py}. Movement-hour delay is reproduced by \path{compute_pedestrian_hour_delay.py}. On acceptance, these scripts and the derived, nonidentifying outputs listed above will be deposited in a public GitHub repository, and the repository URL will be added to the final article. The raw SCATS controller histories cannot be redistributed under the archive terms.
+
+%\section*{SI-7. Interpretation Limits}
+
+%The reported empirical factor ranges do not include SCATS event-parsing error, undetected controller logic, movement-identity error, missing history, time-varying arrival intensity, or day-to-day variation. They describe transfer sensitivity from the calibration study, not confidence intervals or estimates of sampling precision. The calibration cases are clustered within 11 manual-observation and three video-observation intersections and are not a representative sample of Sydney intersections. The manual and video datasets produced essentially identical mean count factors. The behaviour-adjusted factor combines the practical behaviour definitions documented in the calibration paper and should be interpreted as an alternative delay scenario, not a site-specific compliance estimate. All delay targets are conditional on observed first-actuation-to-Walk intervals. No-actuation cycles inform the count likelihood but cannot identify a waiting cohort for delay. The fixed-demand scenarios isolate delay accounting and do not model demand response to changed signal timing or long-run delay. These limits should be carried into any modal comparison using the pedestrian outputs.
+
+% REVIEW CHANGE: R3: Activate limitations on compliance transfer, delayed pressing, and uncertainty ranges.
+\section*{SI-7. Interpretation Limits}
+
+The behaviour-adjusted factor combines the manual compliance scenario and the video crossing-start-delay definition in the calibration study. Actual compliance may vary by location, clock time, traffic conditions and pedestrian population. The controller histories do not observe these behaviours, so applying one transferred factor neither estimates local compliance nor verifies the network average. The reported behaviour-adjusted total is a scenario conditional on transfer of that factor.
+
+Button pressing may occur after a pedestrian reaches the crossing. This can lengthen the recorded first-actuation latency and omit waiting before actuation from $R_i$. Group arrivals and pedestrians who never actuate further separate the event process from individual arrivals. Calibration can absorb discrepancies present in its source observations, but there is no contemporaneous site-specific validation of those adjustments here.
+
+The empirical factor ranges describe transfer sensitivity. They do not include event-parsing error, undetected controller logic, movement-identity error, missing histories, or all variation in arrival intensity and behaviour. The 38 calibration cases are clustered within 11 manual-observation and three video-observation intersections. The ranges are not confidence intervals. The fixed-demand comparison isolates the delay-accounting scenario; it does not model pedestrian demand responses to changed signal timing.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

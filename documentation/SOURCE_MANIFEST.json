@@ -1,0 +1,418 @@
+[
+  {
+    "path": "broad_results/network_20180918/movement_hour_estimates_20180918.csv",
+    "source": "scats-research/broad_results/network_20180918/movement_hour_estimates_20180918.csv",
+    "source_sha256": "39d8810def52e3e74cf89738e9579d499ea5cfd0d9c0d4c5b8822e233deb9f6b",
+    "release_sha256": "39d8810def52e3e74cf89738e9579d499ea5cfd0d9c0d4c5b8822e233deb9f6b",
+    "category": "derived_data",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "broad_results/network_20180918/pedestrian_movement_hour_delay_20180918.csv",
+    "source": "scats-research/broad_results/network_20180918/pedestrian_movement_hour_delay_20180918.csv",
+    "source_sha256": "9d3338374018b076a6ce4dfcb4a531f71d12585861db551f9926f897196eec1f",
+    "release_sha256": "9d3338374018b076a6ce4dfcb4a531f71d12585861db551f9926f897196eec1f",
+    "category": "derived_data",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "broad_results/network_20180918/pedestrian_site_hour_delay_20180918.csv",
+    "source": "scats-research/broad_results/network_20180918/pedestrian_site_hour_delay_20180918.csv",
+    "source_sha256": "472efc9d3e5851deeab0131f247415a30e3d85c687d290175870df7eabe1ba48",
+    "release_sha256": "472efc9d3e5851deeab0131f247415a30e3d85c687d290175870df7eabe1ba48",
+    "category": "derived_data",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "broad_results/network_20180918/mcav_alpha_case_distribution.csv",
+    "source": "scats-research/broad_results/network_20180918/mcav_alpha_case_distribution.csv",
+    "source_sha256": "ea6a51a837a696280f37f2f72c30b4a541d6dd031cf49468c8b09e3502689013",
+    "release_sha256": "5f483760de6d6d6b90dcd6c74d66ed23449762664e525ba6c78cad8682accc18",
+    "category": "calibration_factors",
+    "transformation": "selected aggregate columns: case, count_alpha_case, delay_alpha_case"
+  },
+  {
+    "path": "broad_results/validation/mcav_validation/mcav_compliance_scenario_by_case.csv",
+    "source": "scats-research/broad_results/validation/mcav_validation/mcav_compliance_scenario_by_case.csv",
+    "source_sha256": "6ba9adcd5ca08a51f36874cd437cbb4fee3c5f6304bbbac801e5d997de73fa26",
+    "release_sha256": "dac6f837959146d509d1e85a16ff62decd2bd75aa04960c33debb4649346ef3e",
+    "category": "calibration_factors",
+    "transformation": "selected aggregate columns: case, delay_alpha_observed_compliance_scenario"
+  },
+  {
+    "path": "broad_results/validation/video_noncompliance_validation/video_upstream_peer_cases.csv",
+    "source": "scats-research/broad_results/validation/video_noncompliance_validation/video_upstream_peer_cases.csv",
+    "source_sha256": "afdc36541c76f85ce2aa4fb4ee5794888353754c89e99e742355ca2432d4d998",
+    "release_sha256": "73b76cd23bc19aa1a072680941fed62021742eba7d57f539dba495323cbb106d",
+    "category": "calibration_factors",
+    "transformation": "selected aggregate columns: case_id, count_alpha, delay_alpha, realised_delay_alpha"
+  },
+  {
+    "path": "broad_results/site516_temporal_profiles/site516_movement_hour_estimates.csv",
+    "source": "scats-research/broad_results/site516_temporal_profiles/site516_movement_hour_estimates.csv",
+    "source_sha256": "83ac79917550c9aa11632a66bce19f12d18292c168aafd0d1167dc501fb240d0",
+    "release_sha256": "83ac79917550c9aa11632a66bce19f12d18292c168aafd0d1167dc501fb240d0",
+    "category": "derived_data",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "broad_results/site516_temporal_profiles/site516_diurnal_20180918.csv",
+    "source": "scats-research/broad_results/site516_temporal_profiles/site516_diurnal_20180918.csv",
+    "source_sha256": "7ffcaef2bbabccc9a83eeb591885f9161e91807ece1eb8c9521f14a9b89dbe77",
+    "release_sha256": "7ffcaef2bbabccc9a83eeb591885f9161e91807ece1eb8c9521f14a9b89dbe77",
+    "category": "derived_data",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "broad_results/site516_temporal_profiles/site516_week_20180914_20180920.csv",
+    "source": "scats-research/broad_results/site516_temporal_profiles/site516_week_20180914_20180920.csv",
+    "source_sha256": "874ada5b2c94d85265de56ef4714a14096578476587acbdea4db4feeac5399f8",
+    "release_sha256": "874ada5b2c94d85265de56ef4714a14096578476587acbdea4db4feeac5399f8",
+    "category": "derived_data",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "broad_results/site516_temporal_profiles/site516_monthly_201709_201808.csv",
+    "source": "scats-research/broad_results/site516_temporal_profiles/site516_monthly_201709_201808.csv",
+    "source_sha256": "83262161bd970255844c9edacfa6201184f7f9d521fb5e47795e87abb22af867",
+    "release_sha256": "83262161bd970255844c9edacfa6201184f7f9d521fb5e47795e87abb22af867",
+    "category": "derived_data",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "broad_results/site516_temporal_profiles/site516_processing_status.csv",
+    "source": "scats-research/broad_results/site516_temporal_profiles/site516_processing_status.csv",
+    "source_sha256": "5d0de84b6c2bd990e0c62211eb027cb9549d2f4f950dba8b47daeb3f0f56f218",
+    "release_sha256": "404af1d29b0da69da1adc7585d9087358efdd617dc8879ac5b21479036145d24",
+    "category": "calibration_factors",
+    "transformation": "selected aggregate columns: date, site, status, event_hours, missing_core_hours, coverage_status"
+  },
+  {
+    "path": "paper/figures/paper2_scats_flow_map_sites.csv",
+    "source": "scats-research/paper/figures/paper2_scats_flow_map_sites.csv",
+    "source_sha256": "775f086c115dbe499e6da27acaf583257c61f0afabe779733e921335a1b11553",
+    "release_sha256": "775f086c115dbe499e6da27acaf583257c61f0afabe779733e921335a1b11553",
+    "category": "derived_data",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "paper/figures/paper2_scats_flow_map_site516.csv",
+    "source": "scats-research/paper/figures/paper2_scats_flow_map_site516.csv",
+    "source_sha256": "0bb82d20a9c62af6f6d753c483bf3f5647a9b605921f43fdea3d14138b091b19",
+    "release_sha256": "0bb82d20a9c62af6f6d753c483bf3f5647a9b605921f43fdea3d14138b091b19",
+    "category": "derived_data",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "reference_outputs/site_summary_corrected.csv",
+    "source": "manuscript/revision_2026-09-29/site_summary_corrected.csv",
+    "source_sha256": "b67e3f9154e5b0060a541dad0f53510da032af333ac05401a6c8f9d5fb139d15",
+    "release_sha256": "b67e3f9154e5b0060a541dad0f53510da032af333ac05401a6c8f9d5fb139d15",
+    "category": "derived_data",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "reference_outputs/site_hours_with_retained_movements.csv",
+    "source": "manuscript/revision_2026-09-29/site_hours_with_retained_movements.csv",
+    "source_sha256": "d4901cfa690b6d8100cc8a28a176ed1e96434752cc27cd27f1b4e49526e448a1",
+    "release_sha256": "d4901cfa690b6d8100cc8a28a176ed1e96434752cc27cd27f1b4e49526e448a1",
+    "category": "derived_data",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "reference_outputs/calibration_summary_verified.csv",
+    "source": "manuscript/revision_2026-09-29/calibration_summary_verified.csv",
+    "source_sha256": "fa0d24033db9a25b3c8e5298ef34641e61fed475c7618a07178e439f71b3aaf0",
+    "release_sha256": "fa0d24033db9a25b3c8e5298ef34641e61fed475c7618a07178e439f71b3aaf0",
+    "category": "derived_data",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "reference_outputs/site_distribution_summary_corrected.csv",
+    "source": "manuscript/revision_2026-09-29/site_distribution_summary_corrected.csv",
+    "source_sha256": "b160ce51a3ab9b2fca0cef5ad5077dac2eaefd8c87179fc584251ad91d503efe",
+    "release_sha256": "b160ce51a3ab9b2fca0cef5ad5077dac2eaefd8c87179fc584251ad91d503efe",
+    "category": "derived_data",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "reference_outputs/map_display_positions.csv",
+    "source": "manuscript/revision_2026-09-29/map_display_positions.csv",
+    "source_sha256": "293dc23fdf50eae26b4d0fac13a9cdd11d4f84c20d9852a823f917e3981e2d7e",
+    "release_sha256": "293dc23fdf50eae26b4d0fac13a9cdd11d4f84c20d9852a823f917e3981e2d7e",
+    "category": "derived_data",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "reference_outputs/figures/paper2_average_delay_pooled_density_band.csv",
+    "source": "manuscript/revision_2026-09-29/figures/paper2_average_delay_pooled_density_band.csv",
+    "source_sha256": "fe498bf34c4d4f9c7dcc261649e066f46bd2ae89e6bdf54449562ed79e4cb8a4",
+    "release_sha256": "fe498bf34c4d4f9c7dcc261649e066f46bd2ae89e6bdf54449562ed79e4cb8a4",
+    "category": "figure_source",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "reference_outputs/figures/paper2_count_pooled_density_band.csv",
+    "source": "manuscript/revision_2026-09-29/figures/paper2_count_pooled_density_band.csv",
+    "source_sha256": "d3d53ddabe2ad6816aa0c0d67aa3b269decff1ad4e29f7a6c3edff55c0f4ed89",
+    "release_sha256": "d3d53ddabe2ad6816aa0c0d67aa3b269decff1ad4e29f7a6c3edff55c0f4ed89",
+    "category": "figure_source",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "reference_outputs/figures/paper2_flow_pooled_density_band.csv",
+    "source": "manuscript/revision_2026-09-29/figures/paper2_flow_pooled_density_band.csv",
+    "source_sha256": "bb890fa33d28d83b7e8b2ac13d0e20acb1a57e15d53ed533b2d1a5b3367fb2e2",
+    "release_sha256": "bb890fa33d28d83b7e8b2ac13d0e20acb1a57e15d53ed533b2d1a5b3367fb2e2",
+    "category": "figure_source",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "reference_outputs/figures/paper2_scats_pedestrian_distribution_data.csv",
+    "source": "manuscript/revision_2026-09-29/figures/paper2_scats_pedestrian_distribution_data.csv",
+    "source_sha256": "8dd1a3b14a7b3ba563abd0439fd3ca6c5edfed24e1aabadc9f27df13a8021ceb",
+    "release_sha256": "8dd1a3b14a7b3ba563abd0439fd3ca6c5edfed24e1aabadc9f27df13a8021ceb",
+    "category": "figure_source",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "reference_outputs/figures/paper2_total_delay_pooled_density_band.csv",
+    "source": "manuscript/revision_2026-09-29/figures/paper2_total_delay_pooled_density_band.csv",
+    "source_sha256": "7a267051f01981a1ba7f1b756cd26598414a530beb0d0ccfb77353ead9e148a9",
+    "release_sha256": "7a267051f01981a1ba7f1b756cd26598414a530beb0d0ccfb77353ead9e148a9",
+    "category": "figure_source",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "paper/figures/paper2_scats_pedestrian_distributions.tex",
+    "source": "manuscript/revision_2026-09-29/figures/paper2_scats_pedestrian_distributions.tex",
+    "source_sha256": "ea2c94ddb9296d0ea61e2120de31326880cf26abad2052567162418378565466",
+    "release_sha256": "ea2c94ddb9296d0ea61e2120de31326880cf26abad2052567162418378565466",
+    "category": "code",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "derived_inputs/map_site_coordinates.csv",
+    "source": "manuscript/revision_2026-09-29/map_display_positions.csv",
+    "source_sha256": "293dc23fdf50eae26b4d0fac13a9cdd11d4f84c20d9852a823f917e3981e2d7e",
+    "release_sha256": "7a669e43e902be260fc298505876e49f48016ccac76d7a96cb2410af6c2e5882",
+    "category": "figure_source",
+    "transformation": "select site, longitude, latitude; rename columns for the map builder"
+  },
+  {
+    "path": "converted_samples/BroadWalkExtractor.java",
+    "source": "scats-research/converted_samples/BroadWalkExtractor.java",
+    "source_sha256": "9021be1c6b31a09aeed522f6d32ca6db687843cd1fbf8c0bb18a6476ac4f8b18",
+    "release_sha256": "9021be1c6b31a09aeed522f6d32ca6db687843cd1fbf8c0bb18a6476ac4f8b18",
+    "category": "code",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "converted_samples/SelectedMultiDateWalkExtractor.java",
+    "source": "scats-research/converted_samples/SelectedMultiDateWalkExtractor.java",
+    "source_sha256": "986a4e5811befc1c4d7161a1f23bdc2a3577f2a5f6bb1027a0ec4e4d57d28621",
+    "release_sha256": "986a4e5811befc1c4d7161a1f23bdc2a3577f2a5f6bb1027a0ec4e4d57d28621",
+    "category": "code",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "converted_samples/PedWindowExtractor.java",
+    "source": "scats-research/converted_samples/PedWindowExtractor.java",
+    "source_sha256": "2d0155ac9a06f67c33680c1a556dd3de6264887b5876f4e5bfad68fa92c74eaa",
+    "release_sha256": "2d0155ac9a06f67c33680c1a556dd3de6264887b5876f4e5bfad68fa92c74eaa",
+    "category": "code",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "converted_samples/PedSignalGroupMapper.java",
+    "source": "scats-research/converted_samples/PedSignalGroupMapper.java",
+    "source_sha256": "32984a714e67b99400e2d8d615a2e7823a1a573a7dfaf477e38bf68077f63094",
+    "release_sha256": "32984a714e67b99400e2d8d615a2e7823a1a573a7dfaf477e38bf68077f63094",
+    "category": "code",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "converted_samples/summarize_broad_walk.py",
+    "source": "scats-research/converted_samples/summarize_broad_walk.py",
+    "source_sha256": "7e6f1ecb8046aaace1a2630fcf625f66109e381a2149349ba6fc9214427e14f4",
+    "release_sha256": "7e6f1ecb8046aaace1a2630fcf625f66109e381a2149349ba6fc9214427e14f4",
+    "category": "code",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "converted_samples/compute_actuated_delay.py",
+    "source": "scats-research/converted_samples/compute_actuated_delay.py",
+    "source_sha256": "7b4de26ab5e4fbb9dfde0a6ec7fac2ad25e5e93fcdc213ce3900619801106b26",
+    "release_sha256": "7b4de26ab5e4fbb9dfde0a6ec7fac2ad25e5e93fcdc213ce3900619801106b26",
+    "category": "code",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "converted_samples/compute_cycle_actuation_summary.py",
+    "source": "scats-research/converted_samples/compute_cycle_actuation_summary.py",
+    "source_sha256": "693b67242e01fb59eec24cbcec577286a15202a2f117ee628a0bb1f47d8211cb",
+    "release_sha256": "693b67242e01fb59eec24cbcec577286a15202a2f117ee628a0bb1f47d8211cb",
+    "category": "code",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "converted_samples/flag_auto_served_ped_phases.py",
+    "source": "scats-research/converted_samples/flag_auto_served_ped_phases.py",
+    "source_sha256": "c6dfe73767960b91b6c1c5f318db2339eacebf0227dbc199c970270ed6118b8a",
+    "release_sha256": "c6dfe73767960b91b6c1c5f318db2339eacebf0227dbc199c970270ed6118b8a",
+    "category": "code",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "converted_samples/build_direction_lookup.py",
+    "source": "scats-research/converted_samples/build_direction_lookup.py",
+    "source_sha256": "d48da2eecfd4ddbb5e139de2249c19657704694001ad120714dd56b07448bbb6",
+    "release_sha256": "d48da2eecfd4ddbb5e139de2249c19657704694001ad120714dd56b07448bbb6",
+    "category": "code",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "converted_samples/join_ped_estimates_to_spatial.py",
+    "source": "scats-research/converted_samples/join_ped_estimates_to_spatial.py",
+    "source_sha256": "27176a6d89651a4f530a8c576a1967a0f9f2c4f33aa4d850c5c02ec09141e376",
+    "release_sha256": "27176a6d89651a4f530a8c576a1967a0f9f2c4f33aa4d850c5c02ec09141e376",
+    "category": "code",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "broad_results/network_20180918/scripts/apply_mcav_calibration.py",
+    "source": "scats-research/broad_results/network_20180918/scripts/apply_mcav_calibration.py",
+    "source_sha256": "55aaf979f827ddf123950a4cfafc9c074e37b92192b6a8aa5c2557a5c23836ff",
+    "release_sha256": "55aaf979f827ddf123950a4cfafc9c074e37b92192b6a8aa5c2557a5c23836ff",
+    "category": "code",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "broad_results/network_20180918/scripts/compute_pedestrian_hour_delay.py",
+    "source": "scats-research/broad_results/network_20180918/scripts/compute_pedestrian_hour_delay.py",
+    "source_sha256": "7c97de60648db59527f86171d64b5cff48254759b128d1fb14bfcd049eb02e03",
+    "release_sha256": "7c97de60648db59527f86171d64b5cff48254759b128d1fb14bfcd049eb02e03",
+    "category": "code",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "broad_results/site516_temporal_profiles/scripts/build_site516_temporal_profiles.py",
+    "source": "scats-research/broad_results/site516_temporal_profiles/scripts/build_site516_temporal_profiles.py",
+    "source_sha256": "0bca1eeb247127fa4a4990e9b76dd3798c945b8480040ba75fbb5af8acc419b8",
+    "release_sha256": "0bca1eeb247127fa4a4990e9b76dd3798c945b8480040ba75fbb5af8acc419b8",
+    "category": "code",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "broad_results/site516_temporal_profiles/scripts/extract_site516_dates.py",
+    "source": "scats-research/broad_results/site516_temporal_profiles/scripts/extract_site516_dates.py",
+    "source_sha256": "b05abccc13bb5fec84bcdca6687807da3f3cd1cb4d48f9cfdf0e82b4cb803ca3",
+    "release_sha256": "b05abccc13bb5fec84bcdca6687807da3f3cd1cb4d48f9cfdf0e82b4cb803ca3",
+    "category": "code",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "paper/scripts/build_paper2_distribution_data.py",
+    "source": "scats-research/paper/scripts/build_paper2_distribution_data.py",
+    "source_sha256": "c5f741502d3aecb6b72264a51330ceb0a4e8bc784f72f1ac711a424dbecde4e3",
+    "release_sha256": "c4486ad2c18ebd52a41483c2b8d25bd469b44145942bc579980ae9365cc5a444",
+    "category": "code",
+    "transformation": "portable paths / accepted correction; see documentation/PROVENANCE.md"
+  },
+  {
+    "path": "scripts/build_revision_data.py",
+    "source": "manuscript/revision_2026-09-29/build_revision_data.py",
+    "source_sha256": "6ecfdeb8006d0ba2b963974ec2e8d1ea9f88bc985182048be89acd354445da1a",
+    "release_sha256": "b63df65f0aa0e0c69b99261b3c3ada1a4b7537e573945416bf2684c2d8e3464d",
+    "category": "code",
+    "transformation": "portable paths / accepted correction; see documentation/PROVENANCE.md"
+  },
+  {
+    "path": "paper/main.tex",
+    "source": "accepted-overleaf-export/main.tex",
+    "source_sha256": "1370a3e46dce31759ecddc09baf4a18124d2e5dd0837a035fba0554de31bf8c0",
+    "release_sha256": "1370a3e46dce31759ecddc09baf4a18124d2e5dd0837a035fba0554de31bf8c0",
+    "category": "accepted_manuscript",
+    "transformation": "byte-identical; excludes correspondence and cover image"
+  },
+  {
+    "path": "paper/SI.tex",
+    "source": "accepted-overleaf-export/SI.tex",
+    "source_sha256": "0bb2001365e6fc62b0c201d108e30519211c9e5cb15326f50f661863cf2aa47a",
+    "release_sha256": "0bb2001365e6fc62b0c201d108e30519211c9e5cb15326f50f661863cf2aa47a",
+    "category": "accepted_manuscript",
+    "transformation": "byte-identical; excludes correspondence and cover image"
+  },
+  {
+    "path": "paper/references.bib",
+    "source": "accepted-overleaf-export/references.bib",
+    "source_sha256": "ce9a8e2a976f7d63ba601a42839116c427c7221e934f744a2dd01a3ab583679c",
+    "release_sha256": "ce9a8e2a976f7d63ba601a42839116c427c7221e934f744a2dd01a3ab583679c",
+    "category": "accepted_manuscript",
+    "transformation": "byte-identical; excludes correspondence and cover image"
+  },
+  {
+    "path": "paper/figures/paper2_scats_flow_map.jpeg",
+    "source": "accepted-overleaf-export/figures/paper2_scats_flow_map.jpeg",
+    "source_sha256": "52baf0643d827f6188112fb07f30c7021e1b67958f3a27ad4ef8fef3298bc8ba",
+    "release_sha256": "52baf0643d827f6188112fb07f30c7021e1b67958f3a27ad4ef8fef3298bc8ba",
+    "category": "accepted_figure",
+    "transformation": "byte-identical; excludes correspondence and cover image"
+  },
+  {
+    "path": "paper/figures/paper2_scats_flow_map.pdf",
+    "source": "accepted-overleaf-export/figures/paper2_scats_flow_map.pdf",
+    "source_sha256": "f6a722293bb69639c0a1ccfb2cf11cab34015bb4a0ea6ef14b82888e0ec4bc40",
+    "release_sha256": "f6a722293bb69639c0a1ccfb2cf11cab34015bb4a0ea6ef14b82888e0ec4bc40",
+    "category": "accepted_figure",
+    "transformation": "byte-identical; excludes correspondence and cover image"
+  },
+  {
+    "path": "paper/figures/paper2_scats_pedestrian_distributions.jpeg",
+    "source": "accepted-overleaf-export/figures/paper2_scats_pedestrian_distributions.jpeg",
+    "source_sha256": "a924d9d296dbaaac6fc7ab5b80b4ef9288566bb83252550cdb8ab55a72792b2b",
+    "release_sha256": "a924d9d296dbaaac6fc7ab5b80b4ef9288566bb83252550cdb8ab55a72792b2b",
+    "category": "accepted_figure",
+    "transformation": "byte-identical; excludes correspondence and cover image"
+  },
+  {
+    "path": "paper/figures/paper2_scats_pedestrian_distributions.pdf",
+    "source": "accepted-overleaf-export/figures/paper2_scats_pedestrian_distributions.pdf",
+    "source_sha256": "ff8e9702f9949c1357e1588410b2fd5013f2e33c2c870f9d58b2ef2371af1307",
+    "release_sha256": "ff8e9702f9949c1357e1588410b2fd5013f2e33c2c870f9d58b2ef2371af1307",
+    "category": "accepted_figure",
+    "transformation": "byte-identical; excludes correspondence and cover image"
+  },
+  {
+    "path": "paper/figures/paper2_site516_pedestrian_temporal_profiles.jpeg",
+    "source": "accepted-overleaf-export/figures/paper2_site516_pedestrian_temporal_profiles.jpeg",
+    "source_sha256": "ccbc0321cb5826cebcf187afe7622207232ff595c40c91937da77c2009695e52",
+    "release_sha256": "ccbc0321cb5826cebcf187afe7622207232ff595c40c91937da77c2009695e52",
+    "category": "accepted_figure",
+    "transformation": "byte-identical; excludes correspondence and cover image"
+  },
+  {
+    "path": "paper/figures/paper2_site516_pedestrian_temporal_profiles.pdf",
+    "source": "accepted-overleaf-export/figures/paper2_site516_pedestrian_temporal_profiles.pdf",
+    "source_sha256": "aeaea201e3353ac33c19a66bc86a539334fe95c68cb15ddb069b0b9d5c344bcb",
+    "release_sha256": "aeaea201e3353ac33c19a66bc86a539334fe95c68cb15ddb069b0b9d5c344bcb",
+    "category": "accepted_figure",
+    "transformation": "byte-identical; excludes correspondence and cover image"
+  },
+  {
+    "path": "paper/SI.pdf",
+    "source": "manuscript/resubmission_2026-10-01/submission_files/SI.pdf",
+    "source_sha256": "fda57cf8ecf4631f708262e29481a5f0a6b756aa6f36c9dffccfb2668e426bdc",
+    "release_sha256": "fda57cf8ecf4631f708262e29481a5f0a6b756aa6f36c9dffccfb2668e426bdc",
+    "category": "accepted_manuscript",
+    "transformation": "byte-identical"
+  },
+  {
+    "path": "paper/accepted_author_manuscript.pdf",
+    "source": "accepted-overleaf-export/compiled-main.pdf",
+    "source_sha256": "d87255a36f16306a2b8db07dc8a53d6d04a7ff2d6e6a65c0116c47d24c6b2434",
+    "release_sha256": "d87255a36f16306a2b8db07dc8a53d6d04a7ff2d6e6a65c0116c47d24c6b2434",
+    "category": "accepted_manuscript",
+    "transformation": "byte-identical"
+  }
+]

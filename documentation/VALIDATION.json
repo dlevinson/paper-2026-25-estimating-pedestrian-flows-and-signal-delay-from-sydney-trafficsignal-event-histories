@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "candidate_movement_hours": 9626,
+  "statistical_exclusions": 4290,
+  "additional_controller_exclusions": 222,
+  "retained_movement_hours": 5114,
+  "retained_sites": 174,
+  "usable_site_hours": 2307,
+  "pooled_calibration_cases": 38,
+  "crossings": 331728.647333,
+  "full_compliance_delay_h": 3671.498996,
+  "behaviour_scenario_delay_h": 2746.345193,
+  "weekly_common_cells": 56,
+  "monthly_common_cells": 79,
+  "numeric_reference_tables_checked": [
+    "reference_outputs/calibration_summary_verified.csv",
+    "reference_outputs/figures/paper2_average_delay_pooled_density_band.csv",
+    "reference_outputs/figures/paper2_count_pooled_density_band.csv",
+    "reference_outputs/figures/paper2_flow_pooled_density_band.csv",
+    "reference_outputs/figures/paper2_scats_pedestrian_distribution_data.csv",
+    "reference_outputs/figures/paper2_total_delay_pooled_density_band.csv",
+    "reference_outputs/map_display_positions.csv",
+    "reference_outputs/site_distribution_summary_corrected.csv",
+    "reference_outputs/site_hours_with_retained_movements.csv",
+    "reference_outputs/site_summary_corrected.csv",
+    "broad_results/site516_temporal_profiles/site516_diurnal_20180918.csv",
+    "broad_results/site516_temporal_profiles/site516_week_20180914_20180920.csv",
+    "broad_results/site516_temporal_profiles/site516_monthly_201709_201808.csv"
+  ],
+  "generated_figures": [
+    "outputs/temporal/paper2_site516_pedestrian_temporal_profiles.pdf",
+    "outputs/temporal/site516_pedestrian_temporal_profiles.pdf",
+    "outputs/revision/figures/paper2_scats_flow_map.pdf",
+    "outputs/revision/figures/paper2_scats_pedestrian_distributions.pdf"
+  ],
+  "raw_history_reestimation": "requires restricted histories and external SCATS decoder; not performed"
+}

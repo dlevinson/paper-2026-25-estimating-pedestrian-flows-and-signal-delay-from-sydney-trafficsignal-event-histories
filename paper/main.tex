@@ -1,0 +1,212 @@
+% REVIEW CHANGE 2026-09-30: Applied 29 September revision recommendations.
+% Search for REVIEW CHANGE to review edits in place. R1--R6 refer to reviewer questions.
+% AUDIT marks the usable-site-hour correction; FORMAT marks shortening and table relocation.
+% Revised 2026-08-12: exposure definitions, calibration citation, numerical descriptions, and availability statement.
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{placeins}
+\usepackage{setspace}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=blue
+}
+
+\setstretch{1.08}
+\setlength{\emergencystretch}{2em}
+\widowpenalty=10000
+\clubpenalty=10000
+\setlist[enumerate]{leftmargin=*, itemsep=0.15em}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+
+\title{\textbf{Estimating Pedestrian Flows and Signal Delay from Sydney Traffic-Signal Event Histories}}
+\author{David M. Levinson\\
+\small School of Civil Engineering, The University of Sydney\\
+\small \texttt{david.levinson@sydney.edu.au}}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+
+% REVIEW CHANGE FORMAT: Compact abstract and main prose to meet Findings limits; details retained in SI.
+\begin{abstract}
+
+Traffic-signal histories record first pedestrian calls but omit subsequent arrivals. We apply a calibrated first-actuation estimator to Sydney histories for 18 September 2018. Screening retains 5,114 movement-hours at 174 sites, yielding an estimated 331,729 crossings. Estimated delay is 3,671.5 pedestrian-hours assuming full compliance and 2,746.3 hours under a transferred behaviour scenario: 39.8 and 29.8 seconds per crossing. Median site flow is 66.5 crossings per usable hour. The estimates depend on calibration transfer and screened coverage; they do not constitute a pedestrian census.
+
+\end{abstract}
+
+\noindent\textbf{Keywords:} pedestrian flow; pedestrian delay; traffic-signal histories; pedestrian actuation; censored estimation
+
+% REVIEW CHANGE FORMAT: Condense background and research questions while retaining citations.
+\section{Questions}
+
+The Sydney Coordinated Adaptive Traffic System (SCATS) records a pedestrian service request but generally adds no count for subsequent arrivals before Walk \citep{scats2026whoWeAre}. Earlier studies relate controller activity to observed pedestrian volumes \citep{singleton2021pedestrianSignalCounts,kothuri2024activeTransportationCounts,saheli2026pedestrianVolumes}; timing-based estimation instead uses signal events and an arrival model \citep{liWu2021midblockVolume}. We apply a separately calibrated first-actuation estimator \citep{levinson2026firstActuationCalibration} to ask how estimated crossings and delay vary across Sydney sites, between full-compliance and behaviour-adjusted scenarios, and over the calibration-factor distribution.
+
+\section{Methods}
+
+\subsection{Data}
+
+The archive contains 12,000 regional histories covering 750 dates from 1 September 2016 through 20 September 2018, with 229 intersections in 16 control regions. This application uses Tuesday, 18 September 2018. Timestamped demand, flashing-don't-walk and Walk events yield 9,626 candidate movement-hours at 187 sites.
+
+% REVIEW CHANGE: R1: Define bidirectional crosswalk orientation; individual travel direction is unobserved.
+A pedestrian movement is a controller crossing identifier. Unique spatial matches identify crosswalk orientation; counts combine both travel directions within a crosswalk. Individual travel direction is unobserved.
+
+\subsection{Method}
+
+For restrictive cycle $i$ in movement-hour $h$, $Y_i$ is latency from flashing-don't-walk onset to first actuation and $C_i$ is observed no-actuation exposure. Let $\mathcal A_h$ and $\mathcal C_h$ denote actuated and censored cycles, $K_h=|\mathcal A_h|$, and $T_h$ the clock-time exposure over which events are counted. The Poisson waiting-time estimator is
+\begin{equation}
+\begin{aligned}
+L_h&=\sum_{i\in\mathcal A_h}Y_i+\sum_{i\in\mathcal C_h}C_i,
+&\widehat\lambda_h&=K_h/L_h,\\
+\widehat N_h^{\,e}&=T_h\widehat\lambda_h,
+&\widehat N_h&=\widehat\alpha_N\widehat N_h^{\,e}.
+\end{aligned}
+\label{eq:rate}
+\end{equation}
+Here $L_h$ is likelihood exposure, $\widehat\lambda_h$ is an event rate, $\widehat N_h^{\,e}$ is an event count, and $\widehat N_h$ estimates crossings.
+
+% REVIEW CHANGE: R2: Explain expected later arrivals and their mean remaining wait.
+Let $R_i$ be first-actuation-to-Walk wait. Conditional on $R_i$ and a constant rate, later events number $\widehat\lambda_hR_i$ in expectation and wait $R_i/2$ on average:
+\begin{equation}
+\begin{aligned}
+\widehat D_i&=R_i+\widehat\lambda_hR_i^2/2,
+&\widehat D_h&=\sum_{i\in\mathcal A_h}\widehat D_i,\\
+\widehat D_{h,100}&=\widehat\alpha_{D,100}\widehat D_h,
+&\widehat D_{h,b}&=\widehat\alpha_{D,b}\widehat D_h.
+\end{aligned}
+\label{eq:delay}
+\end{equation}
+% REVIEW CHANGE: R2: Clarify event-equivalent delay and why count scaling only later arrivals changes the estimator.
+Both terms estimate event-equivalent delay. Separate empirical factors convert counts to crossings and complete delay totals to pedestrian-seconds for each target. Applying the count factor only to later arrivals would change the calibrated estimator (SI-2).
+
+% REVIEW CHANGE: R3: Qualify transferred compliance scenario and unobserved waiting before button pressing.
+The transferred factors are $\widehat\alpha_N=2.203$, $\widehat\alpha_{D,100}=2.212$ and $\widehat\alpha_{D,b}=1.655$ \citep{levinson2026firstActuationCalibration}. Empirical case-level ranges describe transfer sensitivity. Crossings are held fixed between delay scenarios; $\widehat\kappa=\widehat\alpha_{D,b}/\widehat\alpha_{D,100}$. Local compliance and delays before button pressing are unobserved, and calibration transfer is unverified at these sites (SI-7).
+
+% REVIEW CHANGE: R5: Distinguish sparse or missing estimates from zero flow; adjacent-hour pooling is not performed.
+Movement-hours require at least five calls, less than 50\% zero-latency calls, less than 75\% no-actuation cycles, and no excluded controller pattern (SI-3). Missing estimates are not zeros. Adjacent-hour pooling could improve sparse-call support under a common-rate assumption; it is not applied here.
+
+% REVIEW CHANGE: AUDIT: Count only site-hours containing retained movements in the flow denominator.
+We sum retained movements to sites. Flow divides crossings by hours containing at least one retained movement; average delay divides total delay by crossings. Site 516's weekly comparison holds movement and clock-hour coverage constant across all seven days. Monthly estimates pool matching movements and clock hours across dates, retaining common coverage across September 2017--August 2018 and excluding two incomplete dates (SI-4).
+
+\section{Findings}
+
+Statistical screens exclude 4,290 candidate movement-hours and controller-pattern screens remove another 222, leaving 5,114 at 174 sites. Ten terminal actuations without subsequent Walk contribute to counts but not delay. Table~\ref{tab:counts} reports 331,729 estimated crossings and the calibration-transfer range.
+
+\begin{table}[htbp]
+\centering
+\caption{Count coefficient from \citet{levinson2026firstActuationCalibration} and network estimate. The factor and crossing ranges propagate the reported calibration-factor distribution.}
+\label{tab:counts}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Calibration source & Mean $\widehat\alpha_N$ & Factor range & Estimated crossings & Crossing range \\
+\midrule
+Separate calibration study & 2.203 & 1.417--3.138 & 331{,}729 & 213{,}384--472{,}525 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% REVIEW CHANGE: R4 + AUDIT: Explain map display offsets and correct site 516 to 17 usable hours and 358.6 crossings/hour.
+Figure~\ref{fig:map} maps site flow and the four crosswalks at site 516 (Willoughby Road/Albany Street, Crows Nest). The inventory's rounded coordinates place multiple sites at identical map positions; display offsets distinguish them. Site 516 contributes 6,095.4 crossings and 39.7 pedestrian-hours of delay over 17 usable hours, or 358.6 crossings/hour.
+
+% REVIEW CHANGE: R5: Explain overnight gaps and retain comparable temporal support.
+Figure~\ref{fig:site516-temporal} shows site 516's temporal estimates. The main-day peak is 659.1 crossings at 13:00; overnight gaps reflect sparse or absent qualifying records under the screens, independent of calibration clock-hour coverage (SI-3). Comparable daily estimates range from 4,162 on Sunday to 6,694 on Friday; monthly typical-day estimates range from 5,132 in June to 6,102 in September.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/paper2_scats_flow_map.jpeg}
+% REVIEW CHANGE: R1/R4: Caption matches revised map; offsets are display positions and crosswalk counts combine both directions.
+\caption{Estimated pedestrian activity on 18 September 2018. Panel A shows the 229-site inventory, with colour indicating estimated crossings per usable site-hour at 174 retained sites; grey symbols indicate sites without retained estimates. The inventory coordinates are rounded to $0.01^{\circ}$. Sites sharing a coordinate are separated by small display offsets and linked to that coordinate; offsets do not indicate precise site locations. The outlined symbol identifies site 516. Panel B shows its four crosswalks; line width indicates estimated crossings over usable hours, combining both travel directions.}
+\label{fig:map}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.88\textwidth]{figures/paper2_site516_pedestrian_temporal_profiles.jpeg}
+\caption{Estimated pedestrian crossings at site 516. Panel A shows the 24-hour profile for 18 September 2018. Crosses mark hours that are not estimable under the screening rules; the hatched 22:00 bar uses three of the four pedestrian movements. Panel B compares seven consecutive days using identical screened movement and clock-hour coverage; the Tuesday analysis date is highlighted. Panel C shows monthly typical-day estimates from September 2017 through August 2018 using the same movements and clock hours in every month. Orange labels identify months in which one incomplete date is excluded. Monthly values are typical-day estimates, not monthly totals.}
+\label{fig:site516-temporal}
+\end{figure}
+
+% REVIEW CHANGE: R6: Explicitly interpret delay table and scenario difference.
+Table~\ref{tab:delay} gives 3,671.5 pedestrian-hours assuming full compliance and 2,746.3 under the behaviour-adjusted scenario, or 39.8 and 29.8 seconds per crossing. The reduction is 925.2 hours (25.2\%); it is a scenario comparison, not an observed compliance effect.
+
+\begin{table}[htbp]
+\centering
+\caption{Estimated network delay using the reported calibration coefficients, assuming 100\% compliance and under the behaviour-adjusted scenario. Estimated crossings are held fixed as an analytical control.}
+\label{tab:delay}
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.245\textwidth}rrrrrr@{}}
+\toprule
+% REVIEW CHANGE: Use ranges rather than intervals to distinguish transfer sensitivity from confidence intervals.
+Delay target & Mean $\widehat\alpha_D$ & Factor range & Total (h) & Total range (h) & s/crossing & $\widehat\kappa$ \\
+\midrule
+Assuming 100\% compliance & 2.212 & 1.217--3.671 & 3{,}671.5 & 2{,}020.3--6{,}092.2 & 39.8 & 1.000 \\
+Behaviour-adjusted & 1.655 & 0.886--2.738 & 2{,}746.3 & 1{,}470.9--4{,}544.9 & 29.8 & 0.748 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{samepage}
+% REVIEW CHANGE: R6 + AUDIT: Interpret table and distributions; corrected coverage is 2,307 site-hours, median flow 66.5.
+Table~\ref{tab:sites} reports median site flow of 66.5 crossings/hour (interquartile range 32.9--150.7) and median average delay of 48.9 seconds/crossing (39.6--59.9). Figure~\ref{fig:distributions} displays the four distributions and calibration-transfer envelopes. Sites contribute 1--22 usable hours (median 15), totalling 2,307. Crossing-weighting gives the lower network average delay of 39.8 seconds. The behaviour-adjusted site median is 36.6 seconds. Crosswalk orientation is identified for 113 movements at 61 sites; all retained movements contribute to network totals.
+\par\end{samepage}
+
+\begin{table}[htbp]
+\centering
+\caption{Distributions across 174 sites using the reported mean calibration coefficients and assuming 100\% compliance}
+\label{tab:sites}
+\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Site metric & Median & Interquartile range \\
+\midrule
+% REVIEW CHANGE: AUDIT: Correct flow median and IQR after excluding rows with zero retained movements.
+Estimated crossings per usable site-hour & 66.5 & 32.9--150.7 \\
+Estimated crossings over usable hours & 927 & 394--2{,}414 \\
+Average delay (s/crossing) & 48.9 & 39.6--59.9 \\
+Total delay (pedestrian-hours) & 12.9 & 5.2--26.9 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/paper2_scats_pedestrian_distributions.jpeg}
+\caption{Site probability densities for estimated crossing flow, crossing count, average delay, and total delay, with delay estimated assuming 100\% compliance. The line uses the reported mean factor estimates; the ribbon propagates the reported calibration-factor distribution. Supplemental Information describes the transfer calculation.}
+\label{fig:distributions}
+\end{figure}
+
+\FloatBarrier\medskip
+
+\noindent\textbf{Acknowledgments.}
+Anthropic Claude and OpenAI Codex assisted with code review and manuscript editing; the author is responsible for verifying the analysis and text.
+
+\medskip
+\noindent\textbf{Data and Code Availability.}
+Raw SCATS controller histories cannot be redistributed under the archive terms. On acceptance, reproducible scripts and derived, nonidentifying movement-hour, site, calibration-factor, and figure-source outputs will be deposited in a public GitHub repository, and the repository URL will be added to the final article.
+
+\medskip
+\noindent\textbf{Funding and Conflict of Interest.}
+The author reports no project-specific funding or conflict of interest.
+
+\small
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

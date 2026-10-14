@@ -1,0 +1,74 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.12}
+\definecolor{pooledblue}{RGB}{35,102,139}
+\begin{document}
+\begin{tikzpicture}
+\begin{groupplot}[
+  group style={group size=2 by 2, horizontal sep=1.7cm, vertical sep=1.7cm},
+  width=8.2cm,
+  height=6.0cm,
+  xmode=log,
+  tick label style={font=\small},
+  label style={font=\small},
+  title style={font=\bfseries\small, yshift=-1mm},
+  grid=major,
+  grid style={gray!18},
+  axis line style={gray!55},
+  tick style={gray!55},
+  scaled y ticks=false,
+  /pgf/number format/fixed,
+  /pgf/number format/precision=2,
+  ylabel={Density of $\ln(x)$},
+]
+\nextgroupplot[
+  title={A. Estimated crossing rate},
+  xlabel={Crossings per usable site-hour},
+]
+\addplot[fill=pooledblue, fill opacity=0.16, draw=none, forget plot]
+  table[col sep=comma, x=flow_x, y=flow_density_band]
+  {paper2_flow_pooled_density_band.csv}
+  \closedcycle;
+\addplot[pooledblue, very thick]
+  table[col sep=comma, x=flow_x, y=flow_density_pooled_point]
+  {paper2_scats_pedestrian_distribution_data.csv};
+
+\nextgroupplot[
+  title={B. Estimated pedestrian crossings},
+  xlabel={Crossings over available usable hours},
+]
+\addplot[fill=pooledblue, fill opacity=0.16, draw=none, forget plot]
+  table[col sep=comma, x=count_x, y=count_density_band]
+  {paper2_count_pooled_density_band.csv}
+  \closedcycle;
+\addplot[pooledblue, very thick]
+  table[col sep=comma, x=count_x, y=count_density_pooled_point]
+  {paper2_scats_pedestrian_distribution_data.csv};
+
+\nextgroupplot[
+  title={C. Average pedestrian delay},
+  xlabel={Seconds per estimated crossing},
+]
+\addplot[fill=pooledblue, fill opacity=0.16, draw=none, forget plot]
+  table[col sep=comma, x=average_delay_x, y=average_delay_density_band]
+  {paper2_average_delay_pooled_density_band.csv}
+  \closedcycle;
+\addplot[pooledblue, very thick]
+  table[col sep=comma, x=average_delay_x, y=average_delay_density_pooled_point]
+  {paper2_scats_pedestrian_distribution_data.csv};
+
+\nextgroupplot[
+  title={D. Total pedestrian delay},
+  xlabel={Pedestrian-hours over available usable hours},
+]
+\addplot[fill=pooledblue, fill opacity=0.16, draw=none, forget plot]
+  table[col sep=comma, x=total_delay_x, y=total_delay_density_band]
+  {paper2_total_delay_pooled_density_band.csv}
+  \closedcycle;
+\addplot[pooledblue, very thick]
+  table[col sep=comma, x=total_delay_x, y=total_delay_density_pooled_point]
+  {paper2_scats_pedestrian_distribution_data.csv};
+\end{groupplot}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+outputs/
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+# Restricted inputs and event-level exports must never be committed.
+Data Dump/
+extract/
+**/extract/
+*.hst
+*.HST
+*.jar
+*.class
+*walk_delay_observations*.csv
+*walk_censored_intervals*.csv
+*ped_walk_windows*.csv
+*cycle_first_actuation_estimates*.csv

@@ -1,0 +1,8 @@
+date,day_of_week,all_usable_estimated_pedestrians,included_movement_hours,common_support_estimated_pedestrians,common_support_movement_hours,is_analysis_day
+20180914,Friday,7236.324030,70,6693.617166,56,no
+20180915,Saturday,5378.961276,63,5225.069834,56,no
+20180916,Sunday,4162.185393,56,4162.185393,56,no
+20180917,Monday,5685.384880,64,5441.741289,56,no
+20180918,Tuesday,6095.385795,67,5723.891990,56,yes
+20180919,Wednesday,5930.619555,66,5588.775323,56,no
+20180920,Thursday,5891.128807,67,5617.682727,56,no
