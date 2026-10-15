@@ -26,4 +26,4 @@ Calibration `alpha`/`multiplier` fields are dimensionless. `point` or `mean` ind
 
 Quality flags are `usable`, `sparse` (fewer than five first actuations), `zero_heavy` (at least 50% zero latencies), `censor_heavy` (at least 75% censored opportunities), or `no_demands`. Controller masks separately flag automatic service. A site/hour is usable if at least one movement-hour survives. Temporal `complete` means all four movements survive; `partial` means fewer survive; `not_estimable` means none survive. `complete_core` means no missing 08:00–18:59 extraction hours; it is a date coverage screen, separate from statistical usability.
 
-The supplement `paper/SI.pdf` supplies the estimator equations, notation, screen definitions, assumptions and calibration details. `TABLE_SCHEMAS.csv` inventories every released CSV header and row count.
+The supplement `accepted_manuscript/SI.pdf` supplies the estimator equations, notation, screen definitions, assumptions and calibration details. `TABLE_SCHEMAS.csv` inventories every released CSV header and row count.

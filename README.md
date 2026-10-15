@@ -26,7 +26,8 @@ The numerical acceptance checks are 9,626 candidate movement-hours, 4,290 statis
 - `scripts/`: accepted correction and public reproduction entrypoint.
 - `derived_inputs/`: minimal coordinate table derived from the final map display table.
 - `reference_outputs/`: corrected site summaries, calibration summaries, and figure-source density tables checked against the accepted revision.
-- `paper/`: accepted author manuscript, supplement, source, references, and final figures. Correspondence and private publisher proofs are excluded.
+- `paper/`: publisher reference pointer, final figures, figure-source inputs, and plotting code.
+- `documentation/accepted_manuscript/`: accepted author manuscript, supplement, source, and references, explicitly preserved as the accepted version. Correspondence and private publisher proofs are excluded.
 - `documentation/`: data dictionary, provenance, external-input boundaries, licenses, and the corrected availability statement.
 
 `paper/figures/paper2_scats_flow_map_sites.csv` is a pre-correction intermediate retained as an input to the accepted correction. Use `reference_outputs/site_summary_corrected.csv` for reported site flow and usable hours. Do not use the upstream MCAV-only calibration outputs as the final pooled results. The public entrypoint applies the same pooled policy as the accepted paper.
@@ -52,4 +53,4 @@ Authored code is MIT licensed; authored documentation and releasable derived out
 Raw SCATS controller histories cannot be redistributed under the archive terms. Reproducible scripts and derived, nonidentifying movement-hour, site, calibration-factor, and figure-source outputs are available at https://github.com/dlevinson/paper-2026-25-estimating-pedestrian-flows-and-signal-delay-from-sydney-trafficsignal-event-histories.
 
 
-The accepted manuscript in `paper/` preserves the submission-era future-tense availability wording; `documentation/AVAILABILITY_STATEMENT.txt` supplies the corrected present-tense statement for the final article.
+The accepted manuscript in `documentation/accepted_manuscript/` preserves the submission-era future-tense availability wording; `documentation/AVAILABILITY_STATEMENT.txt` supplies the corrected present-tense statement for the final article.

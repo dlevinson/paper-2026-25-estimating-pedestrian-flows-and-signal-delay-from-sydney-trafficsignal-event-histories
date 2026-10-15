@@ -328,7 +328,7 @@
     "transformation": "portable paths / accepted correction; see documentation/PROVENANCE.md"
   },
   {
-    "path": "paper/main.tex",
+    "path": "documentation/accepted_manuscript/main.tex",
     "source": "accepted-overleaf-export/main.tex",
     "source_sha256": "1370a3e46dce31759ecddc09baf4a18124d2e5dd0837a035fba0554de31bf8c0",
     "release_sha256": "1370a3e46dce31759ecddc09baf4a18124d2e5dd0837a035fba0554de31bf8c0",
@@ -336,7 +336,7 @@
     "transformation": "byte-identical; excludes correspondence and cover image"
   },
   {
-    "path": "paper/SI.tex",
+    "path": "documentation/accepted_manuscript/SI.tex",
     "source": "accepted-overleaf-export/SI.tex",
     "source_sha256": "0bb2001365e6fc62b0c201d108e30519211c9e5cb15326f50f661863cf2aa47a",
     "release_sha256": "0bb2001365e6fc62b0c201d108e30519211c9e5cb15326f50f661863cf2aa47a",
@@ -344,7 +344,7 @@
     "transformation": "byte-identical; excludes correspondence and cover image"
   },
   {
-    "path": "paper/references.bib",
+    "path": "documentation/accepted_manuscript/references.bib",
     "source": "accepted-overleaf-export/references.bib",
     "source_sha256": "ce9a8e2a976f7d63ba601a42839116c427c7221e934f744a2dd01a3ab583679c",
     "release_sha256": "ce9a8e2a976f7d63ba601a42839116c427c7221e934f744a2dd01a3ab583679c",
@@ -400,7 +400,7 @@
     "transformation": "byte-identical; excludes correspondence and cover image"
   },
   {
-    "path": "paper/SI.pdf",
+    "path": "documentation/accepted_manuscript/SI.pdf",
     "source": "manuscript/resubmission_2026-10-01/submission_files/SI.pdf",
     "source_sha256": "fda57cf8ecf4631f708262e29481a5f0a6b756aa6f36c9dffccfb2668e426bdc",
     "release_sha256": "fda57cf8ecf4631f708262e29481a5f0a6b756aa6f36c9dffccfb2668e426bdc",
@@ -408,7 +408,7 @@
     "transformation": "byte-identical"
   },
   {
-    "path": "paper/accepted_author_manuscript.pdf",
+    "path": "documentation/accepted_manuscript/accepted_author_manuscript.pdf",
     "source": "accepted-overleaf-export/compiled-main.pdf",
     "source_sha256": "d87255a36f16306a2b8db07dc8a53d6d04a7ff2d6e6a65c0116c47d24c6b2434",
     "release_sha256": "d87255a36f16306a2b8db07dc8a53d6d04a7ff2d6e6a65c0116c47d24c6b2434",
